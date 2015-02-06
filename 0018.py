@@ -28,7 +28,10 @@ triangle below:
   63  66  04  68  89  53  67  30  73  16  69  87  40  31
 04  62  98  27  23  09  70  98  73  93  38  53  60  04  23
 """
-triangle = [
+
+triangle1 = [[3],[7,4],[2,4,6],[8,5,9,3]]
+
+triangle2 = [
                                 [75],
                               [95, 64],
                             [17, 47, 82],
@@ -45,6 +48,17 @@ triangle = [
       [63, 66,  4, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31],
     [04, 62, 98, 27, 23,  9, 70, 98, 73, 93, 38, 53, 60, 04, 23]]
 
-path = [None]*15
+triangle = triangle2
+rows = len(triangle)
 
-for
+for n in range(1, rows):
+    columns = len(triangle[n])
+    for p in range(columns):
+        if p == 0:
+            triangle[n][p] += triangle[n - 1][p]
+        elif p == range(columns)[-1]:
+            triangle[n][p] += triangle[n - 1][p - 1]
+        else:
+            triangle[n][p] += max(triangle[n - 1][p],triangle[n - 1][p - 1])
+
+print max(triangle[-1])
